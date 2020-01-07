@@ -9,3 +9,4 @@ import pandas as pd
 gf = pd.read_csv('steam-data-master/analysis/games-features-edit.csv')
 print(gf.columns)
 gf.head()
+print(gf[0])
