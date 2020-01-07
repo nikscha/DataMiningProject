@@ -11,14 +11,14 @@ def prepData(X):
     Y=pd.DataFrame(Y).to_numpy().flatten()
     X=pd.DataFrame(X).to_numpy()    
     X=X[:,2:-1]
-    for x in X:
-        for e in x:
-            if e=='FALSE':
-                e=0
-            elif e=='TRUE':
-                e=1
+    for x in range(len(X)):
+        for e in range(len(X[x])):
+            if X[x,e]==False:
+                X[x,e]=0
+            elif X[x,e]==True:
+                X[x,e]=1
             
-    print(X)
+    #print(X)
     return (X,Y)
 
 

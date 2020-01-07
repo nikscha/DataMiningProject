@@ -25,10 +25,15 @@ from tools import *
 
 
 
-X = pd.read_csv('steam-data-master/analysis/games-features-edit.csv')
+
+X = pd.read_csv('steam-data-master/analysis/games-features-edit.csv',  usecols= [5,6,7,8,9,10,11,12,13,14,15,16,17,18])
 
 X,Y=prepData(X)
+#Y=Y.tolist()
+print(type(Y[0]))
 print(X)
+#X.reshape((1, -1))
+
 kf=KFold(n_splits=10)
 for train,test in kf.split(X):
         X_train, X_test, y_train, y_test = X[train],X[test],Y[train],Y[test]
