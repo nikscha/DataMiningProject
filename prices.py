@@ -26,29 +26,24 @@ from tools import *
 
 
 
-X = pd.read_csv('steam-data-master/analysis/games-features-edit.csv',  usecols= [5,6,7,8,9,10,11,12,13,14,15,16,17,18])
+#X = pd.read_csv('steam-data-master/analysis/games-features-edit.csv',  usecols= [5,6,7,8,9,10,11,12,13,14,15,16,17,18])
 
-X,Y=prepData(X)
-#Y=Y.tolist()
-print(type(Y[0]))
+X = pd.read_csv('data/steam.csv')
+Y = pd.read_csv('data/steam.csv',  usecols= [17])
+Y=pd.DataFrame(Y).to_numpy().flatten()
+Y=Y.astype(int)
+#X=prepData(X)
+X=pd.DataFrame(X).to_numpy()    
+X=X[:,12:16]
+print(type(X[0][0]))
 print(X)
-#X.reshape((1, -1))
 
-kf=KFold(n_splits=10)
-for train,test in kf.split(X):
-        X_train, X_test, y_train, y_test = X[train],X[test],Y[train],Y[test]
-        clf=MLPClassifier(solver='lbfgs',hidden_layer_sizes=(1,))
-        best=0
-        for i in range(5):
-            clf.fit(X_train,y_train)
-            j=clf.score(X_test,y_test)
-            best=j if j>best else best
-        print(best)
-        
-clf=MLPClassifier(solver='lbfgs',hidden_layer_sizes=(1,))
-clf.fit(X,y)
-plotter = mp.MLPPlot(X,Y,clf)
-plotter.plot_boundaries()
+clf=test(X,Y)
+res=clf.predict(X[:50])
+
+for r in res:
+    print(r)
+print(np.average(Y))
 
 
 
@@ -57,22 +52,10 @@ plotter.plot_boundaries()
 
 
 
-def test2(X,Y):
-    kf=KFold(n_splits=10)
-    for train,test in kf.split(X):
-            X_train, X_test, y_train, y_test = X[train],X[test],y[train],y[test]
-            clf=MLPClassifier(solver='lbfgs',hidden_layer_sizes=(1,))
-            best=0
-            for i in range(5):
-                clf.fit(X_train,y_train)
-                j=clf.score(X_test,y_test)
-                best=j if j>best else best
-            print(best)
-            
-    clf=MLPClassifier(solver='lbfgs',hidden_layer_sizes=(1,))
-    clf.fit(X,y)
-    plotter = mp.MLPPlot(X,Y,clf)
-    plotter.plot_boundaries()
+
+
+
+
 
 
 
