@@ -20,7 +20,7 @@ for i in range(0,12624):
             aSet.append(gf.columns[j])
     records.append(aSet)
         
-association_rules = apriori(records, min_support=0.0045, min_confidence=0.95, min_length=2)
+association_rules = apriori(records, min_support=0.001, min_confidence=0.1, min_length=2, min_lift = 1.000001)
 association_results = list(association_rules)
 
 print(len(association_results))   
@@ -32,18 +32,21 @@ for item in association_results:
     # Contains base item and add item
     pair = item[0] 
     items = [x for x in pair]
-    bought = ""
-    for d in items:
-        bought = bought + " " + d
-
-    print("Rule: " + items[0] + " -> " + bought[len(items[0])+2:])
-
-    #second index of the inner list
-    print("Support: " + str(item[1]))
-
-    #third index of the list located at 0th
-    #of the third index of the inner list
-
-    print("Confidence: " + str(item[2][0][2]))
-    print("Lift: " + str(item[2][0][3]))
-    print("=====================================")
+    if items[0]=="GenreIsAction":
+        
+        bought = ""
+        for d in items:
+            if(d!=items[0]):
+                bought = bought + " " + d
+    
+        print("Rule: " + items[0] + " -> " + bought)
+    
+        #second index of the inner list
+        print("Support: " + str(item[1]))
+    
+        #third index of the list located at 0th
+        #of the third index of the inner list
+    
+        print("Confidence: " + str(item[2][0][2]))
+        print("Lift: " + str(item[2][0][3]))
+        print("=====================================")
