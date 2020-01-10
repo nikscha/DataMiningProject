@@ -16,9 +16,11 @@ from Toolbox import treeprint as tp
 
 
 def treeClassifierPrediction(data):
-    allGenres = prepareAllGenres(data)
+    allGenres = getAllGenres(data)
     genres = np.asarray(prepareGamesGenres(data,allGenres))
     prices = preparePrices(data)
+    
+    X_train, X_test, y_train, y_test = train_test_split(genres, prices, test_size=0.33, random_state=42)
     
     clf = tree.DecisionTreeClassifier(criterion = 'gini',min_samples_split=10)
     clf = clf.fit(genres,prices)
@@ -26,9 +28,15 @@ def treeClassifierPrediction(data):
     for i in range(0,100):
         if not predictions.__contains__(clf.predict([genres[i]])/100):
             predictions.append(clf.predict([genres[i]])/100)
-    print(predictions)
+    return predictions
 
-def prepareAllGenres(data):
+def prepareAttributes(data):
+    english = prepareEnglish(data)
+    
+def prepareEnglish(data):
+    
+
+def getAllGenres(data):
     genres = []
     for game in data["genres"]:
         for genre in game.split(";"):
@@ -45,18 +53,41 @@ def prepareGamesGenres(data,genres):
         gamesGenres.append(gameGenres)
     return gamesGenres
 
+
 def preparePrices(data):
     prices = []
     for price in data["price"]:
         prices.append(int(price*100))
     return prices
             
-def errorRate(prediction)
+def errorRate(data,prediction):
+    prices = preparePrices(data)
+    i=0
+    errors=0
+    for item in prediction:
+        if not (data["prices"].values[i]==prediction[i]):
+            errors+=0
+        i+0
+    print("The error rate is " + str(errors/i))
+    
 data = pd.read_csv('data\steam.csv',  usecols= [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17])
-
-#print(data.head(0))
-#print(data["genres"])
-#print(data["price":"publisher"])
+print(data.columns)
 #classify(data)
 
-classify(data)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
