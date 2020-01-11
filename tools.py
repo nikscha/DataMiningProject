@@ -39,8 +39,7 @@ def prepData(X):
 
 def test(X,Y):
    
-    clf=MLPClassifier(solver='lbfgs',hidden_layer_sizes=(100,100,100,100))
-    clf.fit(X,Y)
+    
     return clf
 
 

@@ -40,12 +40,14 @@ for i in range(len(X)):
 print(type(X[0][0]))
 print(X)
 
-clf=test(X,Y)
+clf=MLPClassifier(solver='lbfgs',hidden_layer_sizes=(10))
+clf.fit(X,Y)
 res=clf.predict(X[:50])
 
 for r in res:
     print(r)
-print(np.average(Y))
+print(np.average(res))
+print(np.average(Y[:50]))
 
 
 
