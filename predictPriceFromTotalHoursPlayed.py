@@ -24,6 +24,9 @@ from sklearn.model_selection import *
 from sklearn.neural_network import MLPClassifier
 from Toolbox import MLPPlot as mp
 from tools import *
+import csv
+
+with open('results.csv', 'w', newline='') as results:
 
 
 perceptrons=2 

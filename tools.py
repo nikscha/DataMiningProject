@@ -21,28 +21,13 @@ from sklearn.neural_network import MLPClassifier
 from Toolbox import MLPPlot as mp
 from tools import *
 
-def prepData(X):
-   
-   
-    X=pd.DataFrame(X).to_numpy()    
-    X=X[:,13:15]
-    for x in range(len(X)):
-        for e in range(len(X[x])):
-            if X[x,e]==False:
-                X[x,e]=0
-            elif X[x,e]==True:
-                X[x,e]=1
-            
-    #print(X)
-    return X
+from itertools import chain, combinations
+
+def powerset(iterable):
+    "powerset([1,2,3]) --> () (1,) (2,) (3,) (1,2) (1,3) (2,3) (1,2,3)"
+    s = list(iterable)
+    return list(chain.from_iterable(combinations(s, r) for r in range(1,len(s)+1)))
+
+print(powerset((1,2,3)))
 
 
-def test(X,Y):
-   
-    
-    return clf
-
-
-
-
-#        x=x[type(x) in ['int','float','list']]

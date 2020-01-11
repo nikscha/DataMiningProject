@@ -20,10 +20,15 @@ from sklearn.model_selection import *
 from sklearn.neural_network import MLPClassifier
 from Toolbox import MLPPlot as mp
 from tools import *
-
-
+import xlsxwriter 
 import time
 start_time = time.time()
+
+workbook = xlsxwriter.Workbook('hello.xlsx')
+worksheet = workbook.add_worksheet() 
+worksheet.write('A1', 'Hello..') 
+
+  
 
 
 perceptrons=1 
@@ -37,10 +42,7 @@ Y=pd.DataFrame(Y).to_numpy().flatten()
 Y=Y.astype(int)
 X=pd.DataFrame(X).to_numpy()    
 
-for i in range(len(X)):
-    X[i][0]=np.average(np.array(X[i][0].split('-')).astype(int))
-   
-X=X.astype(int)
+
 
 kf=KFold(n_splits=(10))
 for smoothing in range(3):
@@ -62,7 +64,6 @@ for smoothing in range(3):
             if error >biggestError:
                 biggestError=error
             
-            #print("avg error: "+str(np.average(np.array(err))))
             
     totalError=np.average(np.array(avgErrTot))
     print("smoothing: "+str(smoothing))
@@ -73,4 +74,6 @@ for smoothing in range(3):
     print("")
     
 print("--- %s seconds ---" % (time.time() - start_time))
+
+workbook.close()
 
