@@ -22,9 +22,9 @@ from Toolbox import MLPPlot as mp
 from tools import *
 
 def prepData(X):
-   
-   
-    X=pd.DataFrame(X).to_numpy()    
+
+
+    X=pd.DataFrame(X).to_numpy()
     X=X[:,13:15]
     for x in range(len(X)):
         for e in range(len(X[x])):
@@ -32,15 +32,14 @@ def prepData(X):
                 X[x,e]=0
             elif X[x,e]==True:
                 X[x,e]=1
-            
+
     #print(X)
     return X
 
 
 def test(X,Y):
-   
-    clf=MLPClassifier(solver='lbfgs',hidden_layer_sizes=(100,100,100,100))
-    clf.fit(X,Y)
+
+
     return clf
 
 

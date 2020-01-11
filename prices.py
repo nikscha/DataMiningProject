@@ -33,19 +33,21 @@ Y = pd.read_csv('data/steam.csv',  usecols= [17])
 Y=pd.DataFrame(Y).to_numpy().flatten()
 Y=Y.astype(int)
 #X=prepData(X)
-X=pd.DataFrame(X).to_numpy()    
+X=pd.DataFrame(X).to_numpy()
 X=X[:,12:17]
 for i in range(len(X)):
     X[i][4]=np.average(np.array(X[i][4].split('-')).astype(int))
 print(type(X[0][0]))
 print(X)
 
-clf=test(X,Y)
+clf=MLPClassifier(solver='lbfgs',hidden_layer_sizes=(10))
+clf.fit(X,Y)
 res=clf.predict(X[:50])
 
 for r in res:
     print(r)
-print(np.average(Y))
+print(np.average(res))
+print(np.average(Y[:50]))
 
 
 
