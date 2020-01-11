@@ -31,10 +31,16 @@ def treeClassifierPrediction(data):
     return predictions
 
 def prepareAttributes(data):
-    english = prepareEnglish(data)
+    english = prepareEnglishAttri(data)
     
-def prepareEnglish(data):
-    
+def prepareEnglishAttri(data):
+    english = []
+    for eng in data["english"]:
+        if(eng==1):
+            english.append(True)
+        else:
+            english.append(False)
+    return english
 
 def getAllGenres(data):
     genres = []
