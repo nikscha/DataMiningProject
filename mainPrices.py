@@ -55,7 +55,7 @@ data=X
 
 arguments=[([4],'downloads'),([2,4],'average hours played and downloads'),([0,1],'user ratings'),([0], 'positive user ratings'),([1], 'negative user ratings')]
 #neurons=[(1,),(2,),(3,),(1,1),]
-neurons=powerset((1,1,2,2,3,4))
+neurons=powerset((10,10,20))
 print(neurons)
 row=1
 
