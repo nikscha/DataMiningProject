@@ -29,5 +29,3 @@ def powerset(iterable):
     return list(chain.from_iterable(combinations(s, r) for r in range(1,len(s)+1)))
 
 print(powerset((1,2,3)))
-
-

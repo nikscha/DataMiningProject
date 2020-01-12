@@ -33,7 +33,7 @@ Y = pd.read_csv('data/steam.csv',  usecols= [17])
 Y=pd.DataFrame(Y).to_numpy().flatten()
 Y=Y.astype(int)
 #X=prepData(X)
-X=pd.DataFrame(X).to_numpy()    
+X=pd.DataFrame(X).to_numpy()
 X=X[:,12:17]
 for i in range(len(X)):
     X[i][4]=np.average(np.array(X[i][4].split('-')).astype(int))
