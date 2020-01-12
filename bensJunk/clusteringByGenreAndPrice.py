@@ -6,6 +6,8 @@ Created on Sat Jan 11 23:58:07 2020
 """
 from sklearn import cluster
 import numpy as np
+import pandas as pd
+
 
 def getAllGenres(data):
     genres = []
@@ -45,11 +47,35 @@ def genreAndPriceClusterCentroids(data,centroidCount):
         centroids.append(gameGenres)
     return centroids
 
-data = pd.read_csv('..\data\steam.csv',  usecols= [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17])
-
-results = genreAndPriceClusterCentroids(data,1000)
+data = pd.read_csv('..\data\steam.csv', usecols= [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17])
+results = genreAndPriceClusterCentroids(data,100)
 
 for result in results:
     if not (result[len(result)-1]==7.19):
         print(result)
         print(" ")
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
