@@ -51,7 +51,7 @@ def lowestError(gameG, reprList):
             lowestError = errors
     return lowestError
 
-data = pd.read_csv('data\steam.csv',  usecols= [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17])
+data = pd.read_csv('..\data\steam.csv',  usecols= [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17])
 
 print(str(error(data,gClust.genreClusterCentroids(data,20))) + " average error of the closest aproximator with centroids")
 print(str(error(data,gComb.rankedGameGenres(data,20))) + " average error of the closest aproximator with top 10 occuring genre combinations")
