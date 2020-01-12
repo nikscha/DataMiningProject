@@ -1,5 +1,12 @@
 # -*- coding: utf-8 -*-
 """
+Created on Sun Jan 12 16:54:44 2020
+
+@author: Nikolais_Desktop
+"""
+
+# -*- coding: utf-8 -*-
+"""
 Created on Sat Jan 11 19:41:58 2020
 
 @author: Nikolais_Desktop
@@ -37,26 +44,23 @@ worksheet.write('F1',"biggest error diviation: ")
 #workbook = xlsxwriter.Workbook('results.xlsx')
 
 
-X = pd.read_csv('data/steam.csv', usecols= [11,12,13,14,15,16])
+data=pd.read_csv('data/steam.csv')
 Y = pd.read_csv('data/steam.csv',  usecols= [17])
 
 Y=pd.DataFrame(Y).to_numpy().flatten()
 Y=Y.astype(int)
-X=pd.DataFrame(X).to_numpy()
 
-X=X[:500]
 
-#transform the string nrOfDownloads to an int
-for i in range(len(X)):
-        X[i][5]=np.average(np.array(X[i][5].split('-')).astype(int))
-        
+
+
 #transform genres to int
-for in in range(len(X)):
-    X[i][0]=
-X=X.astype(int)
-data=X
+genres=getAllGenres(data)
+data=prepareGamesGenresAndPrice(data,genres)
+data=data[:500]
+#print(gameGenres)
+#data=X
 
-arguments=[([0],'genres')]
+arguments=[([0,1,2,3,4,5,6,7,8,9,10],'genres')]
 #arguments=[([5],'downloads'),([3,5],'average hours played and downloads'),([1,2],'user ratings'),([1], 'positive user ratings'),([2], 'negative user ratings')]
 #neurons=[(10,),(12,),(8,)]
 neurons=powerset((100,50,30,5))

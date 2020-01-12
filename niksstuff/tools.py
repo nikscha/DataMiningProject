@@ -29,3 +29,23 @@ def powerset(iterable):
     return list(chain.from_iterable(combinations(s, r) for r in range(1,len(s)+1)))
 
 print(powerset((1,2,3)))
+
+
+def getAllGenres(data):
+    genres = []
+    for game in data['genres']:
+        for genre in game.split(";"):
+            if not genres.__contains__(genre):
+                genres.append(genre)
+    return genres
+
+def prepareGamesGenresAndPrice(data,genres):
+    gamesGenres = []
+    gameIndex = 0
+    for game in data['genres']:
+        gameGenres = np.full((1,len(genres)+1), 0, dtype=float).ravel()
+        for genre in game.split(";"):
+            gameGenres[genres.index(genre)]=1
+        gamesGenres.append(gameGenres)
+        gameIndex+1
+    return gamesGenres
