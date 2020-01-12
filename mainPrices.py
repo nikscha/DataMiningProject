@@ -37,25 +37,29 @@ worksheet.write('F1',"biggest error diviation: ")
 #workbook = xlsxwriter.Workbook('results.xlsx')
 
 
-X = pd.read_csv('data/steam.csv', usecols= [12,13,14,15,16])
+X = pd.read_csv('data/steam.csv', usecols= [11,12,13,14,15,16])
 Y = pd.read_csv('data/steam.csv',  usecols= [17])
 
 Y=pd.DataFrame(Y).to_numpy().flatten()
 Y=Y.astype(int)
 X=pd.DataFrame(X).to_numpy()
 
-#X=X[:500]
+X=X[:500]
 
 #transform the string nrOfDownloads to an int
 for i in range(len(X)):
-        X[i][4]=np.average(np.array(X[i][4].split('-')).astype(int))
+        X[i][5]=np.average(np.array(X[i][5].split('-')).astype(int))
+        
+#transform genres to int
+for in in range(len(X)):
+    X[i][0]=
 X=X.astype(int)
 data=X
 
-
-arguments=[([4],'downloads'),([2,4],'average hours played and downloads'),([0,1],'user ratings'),([0], 'positive user ratings'),([1], 'negative user ratings')]
-neurons=[(10,),(12,),(8,)]
-#neurons=powerset((10,10,20))
+arguments=[([0],'genres')]
+#arguments=[([5],'downloads'),([3,5],'average hours played and downloads'),([1,2],'user ratings'),([1], 'positive user ratings'),([2], 'negative user ratings')]
+#neurons=[(10,),(12,),(8,)]
+neurons=powerset((100,50,30,5))
 print(neurons)
 row=1
 
@@ -127,3 +131,4 @@ for argument in arguments:
     
     
 workbook.close()
+print("--- %s seconds ---" % (time.time() - start_time))
