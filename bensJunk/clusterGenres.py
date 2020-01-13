@@ -52,14 +52,6 @@ def genresAsBooleanList(data,centroids):
         gamesGenres.append(gameGenres)
     return gamesGenres
 
-#data = pd.read_csv('data\steam.csv',  usecols= [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17])
-
-#bestGenres = genreClusterCentroids(data, 10)
-#print(bestGenres)
-    
-        
-        
-        
         
         
         
