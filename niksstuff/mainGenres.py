@@ -32,7 +32,7 @@ import xlsxwriter
 import time
 start_time = time.time()
 
-workbook = xlsxwriter.Workbook('results.xlsx')
+workbook = xlsxwriter.Workbook('genres.xlsx')
 worksheet = workbook.add_worksheet() 
 worksheet.write('A1', 'Results of overnight computing') 
 worksheet.write('B1', "smoothing itterations: ")
@@ -44,8 +44,8 @@ worksheet.write('F1',"biggest error diviation: ")
 #workbook = xlsxwriter.Workbook('results.xlsx')
 
 
-data=pd.read_csv('data/steam.csv')
-Y = pd.read_csv('data/steam.csv',  usecols= [17])
+data=pd.read_csv('..\data/steam.csv')
+Y = pd.read_csv('..\data/steam.csv',  usecols= [17])
 
 Y=pd.DataFrame(Y).to_numpy().flatten()
 Y=Y.astype(int)
@@ -57,13 +57,14 @@ Y=Y.astype(int)
 genres=getAllGenres(data)
 data=prepareGamesGenresAndPrice(data,genres)
 data=data[:500]
-#print(gameGenres)
-#data=X
 
-arguments=[([0,1,2,3,4,5,6,7,8,9,10],'genres')]
+
+
+#attributes that should be considered in the classification
+arguments=[([0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20],'genres')]
 #arguments=[([5],'downloads'),([3,5],'average hours played and downloads'),([1,2],'user ratings'),([1], 'positive user ratings'),([2], 'negative user ratings')]
-#neurons=[(10,),(12,),(8,)]
-neurons=powerset((100,50,30,5))
+#neurons=[(200)]
+neurons=powerset((200,150,50,30))
 print(neurons)
 row=1
 

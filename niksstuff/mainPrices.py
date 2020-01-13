@@ -37,8 +37,8 @@ worksheet.write('F1',"biggest error diviation: ")
 #workbook = xlsxwriter.Workbook('results.xlsx')
 
 
-X = pd.read_csv('data/steam.csv', usecols= [12,13,14,15,16])
-Y = pd.read_csv('data/steam.csv',  usecols= [17])
+X = pd.read_csv('..\data/steam.csv', usecols= [12,13,14,15,16])
+Y = pd.read_csv('..\data/steam.csv',  usecols= [17])
 
 Y=pd.DataFrame(Y).to_numpy().flatten()
 Y=Y.astype(int)
@@ -57,7 +57,8 @@ data=X
 
 arguments=[([4],'downloads'),([2,4],'average hours played and downloads'),([0,1],'user ratings'),([0], 'positive user ratings'),([1], 'negative user ratings')]
 #neurons=[(10,),(12,),(8,)]
-neurons=powerset((100,50,30,5))
+#neurons=powerset((100,50,30,5))
+neurons=[(i,) for i in range(1,60)]
 print(neurons)
 row=1
 
